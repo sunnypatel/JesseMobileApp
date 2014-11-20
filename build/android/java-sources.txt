@@ -1,0 +1,8 @@
+"C:/Users/Daniel/Documents/Titanium_Studio_Workspace/JesseMobile/build/android/gen/android/support/v7/appcompat/R.java"
+"C:/Users/Daniel/Documents/Titanium_Studio_Workspace/JesseMobile/build/android/gen/com/jesseme/jessemobile/ApplicationStylesheet.java"
+"C:/Users/Daniel/Documents/Titanium_Studio_Workspace/JesseMobile/build/android/gen/com/jesseme/jessemobile/AssetCryptImpl.java"
+"C:/Users/Daniel/Documents/Titanium_Studio_Workspace/JesseMobile/build/android/gen/com/jesseme/jessemobile/JessemobileActivity.java"
+"C:/Users/Daniel/Documents/Titanium_Studio_Workspace/JesseMobile/build/android/gen/com/jesseme/jessemobile/JessemobileAppInfo.java"
+"C:/Users/Daniel/Documents/Titanium_Studio_Workspace/JesseMobile/build/android/gen/com/jesseme/jessemobile/JessemobileApplication.java"
+"C:/Users/Daniel/Documents/Titanium_Studio_Workspace/JesseMobile/build/android/gen/com/jesseme/jessemobile/R.java"
+"C:/Users/Daniel/Documents/Titanium_Studio_Workspace/JesseMobile/build/android/gen/ti/modules/titanium/ui/R.java"
