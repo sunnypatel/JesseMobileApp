@@ -1,4 +1,8 @@
 
+//credits:
+//http://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript
+//	->used as reference for JS singleton design
+
 var StateManager = (function () {
  
   // Instance stores a reference to the Singleton
@@ -50,25 +54,3 @@ var StateManager = (function () {
   };
 })();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// create base UI tab and root window
-
-var StateManagerSingleton = function(){
-
-
-};
