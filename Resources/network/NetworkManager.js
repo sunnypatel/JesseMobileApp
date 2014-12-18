@@ -7,7 +7,7 @@ var token;
 var stagingURL = "178.18.16.226:2730";
 //the devURL is always changing based on what local address my laptop is given.
 var devURL = "10.0.0.18:8123";
-var url = devURL;
+var url = stagingURL;
 
 Ti.include("/Resources/state/StateManager.js");
 Ti.include("/Resources/ui/main/OrderingManager.js");
@@ -32,7 +32,7 @@ function login(username, password){
 			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
 				});
 				toast.show();
-			}
+			}z
 			//not found
 			else if(this.status == 404){
 				var toast = Ti.UI.createNotification({
