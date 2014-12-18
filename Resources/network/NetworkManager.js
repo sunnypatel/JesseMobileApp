@@ -32,7 +32,8 @@ function login(username, password){
 			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
 				});
 				toast.show();
-			}z
+			}
+			//TODOL when is this returned?
 			//not found
 			else if(this.status == 404){
 				var toast = Ti.UI.createNotification({
@@ -44,7 +45,7 @@ function login(username, password){
 			//TODO: when is this code returned?
 			else if(this.status == 401){
 				var toast = Ti.UI.createNotification({
-			    message:"Server Error :(",
+			    message:"Invalid Username or Password",
 			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
 				});
 				toast.show();
@@ -68,24 +69,43 @@ function login(username, password){
 	net.send(data);
 }
 
-function getRestaurants(long, lat){
-	
-	Ti.API.info("longtiude: "+JSON.stringify(long)+", latitude: "+lat);
+function getRestaurants(long, lat, cb){
+	var longitude = JSON.stringify(long);
+	var latitude = JSON.stringify(lat);
+	Ti.API.info("longtiude: "+longitude+", latitude: "+latitude);
 	var json;
 	var jsonString;
 	var net = Ti.Network.createHTTPClient({
 		onload: function() {
-			jsonString = JSON.stringify(this.responseText);
-			json = JSON.parse(this.responseText);
-			populateList(json);
-			Ti.API.info("restaurant response: "+jsonString);
+			cb(this);
 		}
 	});
 	
-	net.open('POST',url+"/restaurant/2");
+	net.open('POST',url+"/location/near");
+	var data = {
+		'longitude':longitude,
+		'latitude':latitude,
+		'apiToken':token
+	};
+	Ti.API.info("sending :"+JSON.stringify(data)+" to restaurant lookup");
+	net.send(data);
+}
+
+function getRestaurant(id, cb){
+	Ti.API.info("getting info for restaurant: "+id);
+	var json;
+	var jsonString;
+	var net = Ti.Network.createHTTPClient({
+		onload: function() {
+			cb(this);
+		}
+	});
+	
+	net.open('POST',url+"/restaurant/"+id);
 	var data = {
 		'apiToken':token
 	};
+	Ti.API.info("sending :"+JSON.stringify(data)+" to get restaurant");
 	net.send(data);
 }
 

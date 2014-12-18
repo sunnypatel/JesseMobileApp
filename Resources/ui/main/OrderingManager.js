@@ -18,8 +18,27 @@ function OrderingManager(){
 			if (e.error) {
 				alert("GPS is disabled, please enable it to find restaurants");
 			} else {
-				getRestaurants(e.coords.longitude, e.coords.latitude);
+				var cb = function(resp) {
+					Ti.API.info("calling outer callback --1");
+					jsonString = JSON.stringify(resp.responseText);
+					Ti.API.info("calling outer callback --2 ("+ resp.responseText+")");
+					json = JSON.parse(resp.responseText);
+					Ti.API.info("calling outer callback --3");
+
+					// populateList(json);
+					Ti.API.info("restaurant response: "+jsonString);
+					
+					var cb = function(resp){
+						Ti.API.info("calling inner callback");
+						Ti.API.info("getRestaurant returned: "+JSON.stringify(resp));
+						populateList(JSON.parse(resp.responseText));
+					};
+					getRestaurant(json[0].id, cb);
+				};
+				getRestaurants(e.coords.longitude, e.coords.latitude, cb);
 				Ti.API.info(JSON.stringify(e.coords));
+
+
 			}
 		});
 	} else {
@@ -32,6 +51,7 @@ function OrderingManager(){
 }
 
 function populateList(restaurant){
+	Ti.API.info("Populate list has been called for restaurant: "+restaurant);
 	win.setTitle(restaurant.name);
 	Ti.API.info("restaurant name: "+restaurant.name);
 	var item = new MenuItemCollectionView(restaurant);
