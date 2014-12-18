@@ -26,6 +26,7 @@ function MenuItemCollectionView(collectionData){
 				row.add(new MenuItemBlankView());	
 			else{
 				var item = new MenuItemView(collectionData.items[j], dataDisplayView); 
+				Ti.API.info("item["+j+"]: "+collectionData.items[j]);
 				row.add(item);
 			}	
 		}

@@ -1,12 +1,16 @@
+
+
 var token;
 
 //TODO: enter production url
 // var productionURL = "jesseme.com";
 var stagingURL = "178.18.16.226:2730";
-var devURL = "10.0.0.4:8123";
-var url = stagingURL;
+//the devURL is always changing based on what local address my laptop is given.
+var devURL = "10.0.0.18:8123";
+var url = devURL;
 
 Ti.include("/Resources/state/StateManager.js");
+Ti.include("/Resources/ui/main/OrderingManager.js");
 
 function login(username, password){
 	var json;
@@ -21,27 +25,26 @@ function login(username, password){
 		//if the login was unsuccessful
 		onerror: function(e){
 			Ti.API.debug(e.error);
+			//connection failed
+			if(this.status == 0){
+				var toast = Ti.UI.createNotification({
+			    message:"Connection to "+url+" refused",
+			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+				});
+				toast.show();
+			}
 			//not found
-			if(this.status == 404){
+			else if(this.status == 404){
 				var toast = Ti.UI.createNotification({
 			    message:"Invalid Username or Password",
 			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
 				});
 				toast.show();
 			}
-			//bad request response
-			else if(this.status == 400){
+			//TODO: when is this code returned?
+			else if(this.status == 401){
 				var toast = Ti.UI.createNotification({
-			    message:"Invalid Username or Password",
-			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
-				});
-				toast.show();
-			}
-			//TODO: check with sunny if forbidden can happen during login
-			//forbidden response
-			else if(this.status == 403){
-				var toast = Ti.UI.createNotification({
-			    message:"Forbidden",
+			    message:"Server Error :(",
 			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
 				});
 				toast.show();
@@ -65,20 +68,23 @@ function login(username, password){
 	net.send(data);
 }
 
-function getRestaurants(){
+function getRestaurants(long, lat){
 	
+	Ti.API.info("longtiude: "+JSON.stringify(long)+", latitude: "+lat);
 	var json;
+	var jsonString;
 	var net = Ti.Network.createHTTPClient({
 		onload: function() {
+			jsonString = JSON.stringify(this.responseText);
 			json = JSON.parse(this.responseText);
-			// loginResponse(json);
+			populateList(json);
+			Ti.API.info("restaurant response: "+jsonString);
 		}
 	});
 	
-	net.open('POST',url+"/user/login");
+	net.open('POST',url+"/restaurant/2");
 	var data = {
-		'phone':username,
-		'password':password
+		'apiToken':token
 	};
 	net.send(data);
 }
