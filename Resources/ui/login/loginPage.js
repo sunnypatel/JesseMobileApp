@@ -8,7 +8,7 @@ var username = Titanium.UI.createTextField({
     width:"90%",
     height:80,
     hintText:'Phone Number',
-    keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+    keyboardType:Titanium.UI.KEYBOARD_NUMBER_PAD,
     returnKeyType:Titanium.UI.RETURNKEY_DEFAULT,
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
