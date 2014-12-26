@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <id>com.jesseme.jessemobile</id>
+    <id>com.jesseme.mobile.jessemobile</id>
     <name>JesseMobile</name>
     <version>1.0</version>
     <publisher>Daniel</publisher>
-    <url>http://www.jesseme.com</url>
+    <url>http://</url>
     <description/>
     <copyright>2014 by Daniel</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <guid>ad27bc39-3f88-42d7-92af-3c6f91d24abf</guid>
+    <guid>1cbd0681-ff9f-40f5-87f2-605e1a33d7d5</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <ios>
         <plist>
@@ -56,4 +56,7 @@
         <target device="mobileweb">true</target>
     </deployment-targets>
     <sdk-version>3.4.0.GA</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+    </plugins>
 </ti:app>
