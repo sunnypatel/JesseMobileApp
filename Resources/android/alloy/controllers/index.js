@@ -10,6 +10,9 @@ function __processArg(obj, key) {
 function Controller() {
     function doClick() {
         alert($.label.text);
+        var locationservice = require("LocationService");
+        var testing = locationservice();
+        testing.beginService();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";

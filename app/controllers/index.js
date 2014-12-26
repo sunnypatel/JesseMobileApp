@@ -1,5 +1,9 @@
 function doClick(e) {
     alert($.label.text);
+    
+    var locationservice = require("LocationService");
+    var testing = locationservice();
+	testing.beginService();
 }
 
 // demonstrates manual mode:

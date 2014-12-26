@@ -1,8 +1,8 @@
-function beginService() {
+function LocationService() {
     var providerGps = Ti.Geolocation.Android.createLocationProvider({
         name: Ti.Geolocation.PROVIDER_GPS,
         minUpdateDistance: 0,
-        minUpdateTime: 0
+        minUpdateTime: 5e3
     });
     Ti.Geolocation.Android.addLocationProvider(providerGps);
     Ti.Geolocation.Android.manualMode = true;
@@ -14,3 +14,5 @@ function beginService() {
     };
     Titanium.Geolocation.addEventListener("location", locationCallback);
 }
+
+module.exports = LocationService;
