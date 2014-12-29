@@ -1,9 +1,12 @@
 function doClick(e) {
     alert($.label.text);
-    
-    var locationservice = require("LocationService");
-    var testing = locationservice();
-	testing.beginService();
+    $.label.text = "clicked!";
+    var locationService = require("LocationService");
+    var location = locationService.getLocation();
+    alert(location.longitude+", "+location.latitude);
+    // var locationservice = require("LocationService");
+    // var testing = locationservice();
+	// $.locationservice.beginService();
 }
 
 // demonstrates manual mode:
@@ -24,3 +27,4 @@ function doClick(e) {
 // Titanium.Geolocation.addEventListener('location', locationCallback);
 
 $.index.open();
+

@@ -10,4 +10,5 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
-
+var locationServices = require("LocationService");
+locationServices.beginService();
