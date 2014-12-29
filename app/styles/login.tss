@@ -1,0 +1,40 @@
+".container": {
+	backgroundColor:"blue",
+	layout:"vertical"
+}
+
+"TextArea": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	top:"80",
+	left:"40",
+	right:"40",
+	color:"#fff",
+}
+
+"#login_phone_field": {
+	font: {
+		fontSize:36
+	},
+	hintText:"Phone number"
+}
+
+"#login_password_field": {
+	font: {
+		fontSize:36
+	},
+	hintText:"Password"
+}
+
+"#login_submit_button": {
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,	
+	font: {
+		fontSize: 36
+	},
+	top:"80",
+	left:"40",
+	right:"40",
+	color:"#fff",
+}
+

@@ -9,7 +9,7 @@ exports.beginService = function(){
 	// demonstrates manual mode:
 	var providerGps = Ti.Geolocation.Android.createLocationProvider({
 	    name: Ti.Geolocation.PROVIDER_GPS,
-	    minUpdateDistance: 5.0,
+	    minUpdateDistance: 10.0,
 	    minUpdateTime: 5000
 	});
 	Ti.Geolocation.Android.addLocationProvider(providerGps);

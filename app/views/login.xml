@@ -1,0 +1,11 @@
+
+//belongs to Sunny
+
+<Alloy>
+	<Window layout="vertical">
+		<TextArea id="login_phone_field"/>
+		<TextArea id="login_password_field"/>
+		<Button id="login_submit_button" onClick="attemptLogin">Login</Button>
+	</Window>	
+</Alloy>
+

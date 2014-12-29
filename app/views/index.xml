@@ -1,5 +1,8 @@
+
+<!-- This file is never displayed, but can be used as a reference-->
+<!-- This could eventually be used for splash or other loading purposes-->
 <Alloy>
 	<Window class="container">
-		<Label id="label" onClick="doClick">Hello, World</Label>
+		<Label id="label">Hello, World</Label>
 	</Window>
 </Alloy>
