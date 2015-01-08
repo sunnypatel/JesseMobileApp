@@ -1,0 +1,4 @@
+<Alloy>
+        <!-- Define the styling properties in the TSS file -->
+        <ActivityIndicator id="activityIndicator" message="Loading" height="Ti.UI.FILL"/>
+</Alloy>

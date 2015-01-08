@@ -1,0 +1,9 @@
+".container": {
+	backgroundColor:"white"
+}
+
+"ActivityIndicator": {
+	font: {
+		fontSize:24
+	}
+}

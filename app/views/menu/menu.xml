@@ -1,0 +1,7 @@
+
+
+<Alloy>
+	<Window layout="vertical">
+		<!-- as far as I can tell right now, the only things that belong in here are added dynamically -->
+	</Window>
+</Alloy>

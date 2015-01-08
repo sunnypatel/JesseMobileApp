@@ -16,14 +16,16 @@
 	font: {
 		fontSize:36
 	},
-	hintText:"Phone number"
+	hintText:"Phone number",
+	value:"2403570609"
 }
 
 "#login_password_field": {
 	font: {
 		fontSize:36
 	},
-	hintText:"Password"
+	hintText:"Password",
+	value:"jesse2014"
 }
 
 "#login_submit_button": {

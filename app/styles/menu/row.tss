@@ -1,0 +1,15 @@
+
+".container":{
+	backgroundColor:"orange",
+	layout:"horizontal",
+}
+
+"TextArea":{
+	width:Ti.UI.FILL,
+	height:Ti.UI.SIZE,
+	top:20,
+	bottom:20,
+	right:20,
+	left:20
+}
+

@@ -18,9 +18,9 @@ exports.beginService = function(){
 	    if (!e.success || e.error) {
 	        Ti.API.info('error:' + JSON.stringify(e.error));
 	    } else {
-	    	alert('coords: ' + JSON.stringify(e.coords));
+	    	// alert('coords: ' + JSON.stringify(e.coords));
 	    	location = e.coords;
-	        Ti.API.info('coords: ' + JSON.stringify(e.coords));
+	        // Ti.API.info('coords: ' + JSON.stringify(e.coords));
 	    }
 	};
 	Titanium.Geolocation.addEventListener('location', locationCallback);
