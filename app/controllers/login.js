@@ -15,3 +15,6 @@ function attemptLogin(){
 	};
 	api.login(username, password, cb);
 };
+
+//TODO: remove this. this is just to speed up testing	
+attemptLogin();

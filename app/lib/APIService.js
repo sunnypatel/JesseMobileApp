@@ -72,17 +72,16 @@ exports.login = function(username, password, callback){
 	client.send(data);
 };
 
-exports.getRestaurantByGeoLocation = function(callback){	
+exports.getRestaurantsByGeolocation = function(callback){	
 	var json;
+	var locationService = require("LocationService");
+	var location = locationService.getLocation();
 	var client = Ti.Network.createHTTPClient({
 		
 		//if the login was successful
 		onload: function() {
 			json = JSON.parse(this.responseText);
-			token =  json.apiToken;
-			Ti.API.info("new token saved: "+token);
-			// StateManager.getInstance().setState("ordering");
-			callback(true);
+			callback(json);
 		},
 		//if the login was unsuccessful
 		onerror: function(e){
@@ -95,7 +94,7 @@ exports.getRestaurantByGeoLocation = function(callback){
 				});
 				toast.show();
 			}
-			//TODOL when is this returned?
+			//TODO when is this returned?
 			//not found
 			else if(this.status == 404){
 				var toast = Ti.UI.createNotification({
@@ -124,10 +123,64 @@ exports.getRestaurantByGeoLocation = function(callback){
 		}
 	});
 	//open the connection to the url designated
-	client.open("POST", url+"/user/login");
+	client.open("POST", url+"/location/near");
 	var data = {
-		"phone":username,
-		"password":password
+		"latitude":location.latitude,
+		"longitude":location.longitude
 	};
 	client.send(data);
+};
+
+
+exports.getRestaurantById = function(id, callback){	
+	var json;
+	var client = Ti.Network.createHTTPClient({
+		
+		//if the login was successful
+		onload: function() {
+			json = JSON.parse(this.responseText);
+			callback(json);
+		},
+		//if the login was unsuccessful
+		onerror: function(e){
+			Ti.API.debug(e.error);
+			//connection failed
+			if(this.status == 0){
+				var toast = Ti.UI.createNotification({
+			    message:"Connection to "+url+" refused",	
+			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+				});
+				toast.show();
+			}
+			//TODO when is this returned?
+			//not found
+			else if(this.status == 404){
+				var toast = Ti.UI.createNotification({
+			    message:"Invalid Username or Password",
+			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+				});
+				toast.show();
+			}
+			//TODO: when is this code returned?
+			else if(this.status == 401){
+				var toast = Ti.UI.createNotification({
+			    message:"Invalid Username or Password",
+			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+				});
+				toast.show();
+			}
+			//server error response
+			else if(this.status == 500){
+				var toast = Ti.UI.createNotification({
+			    message:"We have some technical difficulties :( try again later?)",
+			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+				});
+				toast.show();
+			}
+			callback(false);
+		}
+	});
+	//open the connection to the url designated
+	client.open("POST", url+"/restaurant/"+id);
+	client.send();
 };
