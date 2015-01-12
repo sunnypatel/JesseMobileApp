@@ -2,10 +2,19 @@
 //belongs to Sunny
 
 <Alloy>
-	<Window layout="vertical">
-		<TextArea id="login_phone_field"/>
-		<TextArea id="login_password_field"/>
-		<Button id="login_submit_button" onClick="attemptLogin">Login</Button>
+	<Window>
+		<Label id="welcome">Let's eat</Label>
+		<Label id="catchLine">We're waiting on you.</Label>
+		<View id="transparency">
+			<View id="loginContainer">
+				<Label top="0">Phone</Label>
+				<TextArea id="login_phone_field"/>
+				<Label>Password</Label>
+				<TextArea id="login_password_field"/>
+				<Button id="login_submit_button" onClick="attemptLogin">Login</Button>
+			</View>
+		</View>
+		<Label id="footer">[Jesse Logo Here]</Label>
 	</Window>	
 </Alloy>
 
