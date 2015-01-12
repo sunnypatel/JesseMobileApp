@@ -1,0 +1,5 @@
+"TextArea":{
+	editable:false,
+	focusable:false,
+	backgroundColor:"red"
+}

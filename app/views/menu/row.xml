@@ -3,9 +3,9 @@
 <!-- this is a placeholder for a row of items in the menu page -->
 <Alloy>
 	<View class="container" layout="vertical">
-	
-		<View id="row_items_area" height="Ti.UI.SIZE" width="Ti.UI.FILL" layout="horizontal"/>
-		<View id="row_description_area" height="Ti.UI.SIZE" width="Ti.UI.FILL" visible="false"/>
+
+		<View id="row_items_area" height="25%" width="Ti.UI.FILL" layout="horizontal"/>
 	
 	</View>
 </Alloy>
+

@@ -1,11 +1,14 @@
 
 ".container":{
-	backgroundColor:"orange",
 	height:Ti.UI.SIZE,
-	width:Ti.UI.SIZE
+	width:Ti.UI.SIZE,
+	backgroundColor:"green"
 }
 
-"TextArea":{
+"#row_items_area":{
 	backgroundColor:"white"
 }
 
+"#row_description_area": {
+	backgroundColor:"blue"
+}
