@@ -8,12 +8,6 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
-    function doClick() {
-        alert($.label.text);
-        var locationservice = require("LocationService");
-        var testing = locationservice();
-        testing.beginService();
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     if (arguments[0]) {
@@ -29,8 +23,8 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    var __defers = {};
     $.__views.index = Ti.UI.createWindow({
+        navBarHidden: true,
         backgroundColor: "white",
         id: "index"
     });
@@ -46,11 +40,9 @@ function Controller() {
         id: "label"
     });
     $.__views.index.add($.__views.label);
-    doClick ? $.__views.label.addEventListener("click", doClick) : __defers["$.__views.label!click!doClick"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.index.open();
-    __defers["$.__views.label!click!doClick"] && $.__views.label.addEventListener("click", doClick);
+    Alloy.createController("login");
     _.extend($, exports);
 }
 

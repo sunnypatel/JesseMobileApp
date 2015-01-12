@@ -17,4 +17,4 @@ function attemptLogin(){
 };
 
 //TODO: remove this. this is just to speed up testing	
-attemptLogin();
+//attemptLogin();

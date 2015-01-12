@@ -8,8 +8,8 @@
     <description/>
     <copyright>2014 by Daniel</copyright>
     <icon>appicon.png</icon>
-    <fullscreen>false</fullscreen>
-    <navbar-hidden>false</navbar-hidden>
+    <fullscreen>true</fullscreen>
+    <navbar-hidden>true</navbar-hidden>
     <analytics>true</analytics>
     <guid>1cbd0681-ff9f-40f5-87f2-605e1a33d7d5</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
@@ -38,7 +38,12 @@
             </dict>
         </plist>
     </ios>
-    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+    	<manifest>
+    		<application android:theme="@style/Theme.NoActionBar"></application>
+    		<uses-sdk android:minSdkVersion="14"/>
+    	</manifest>
+    </android>
     <mobileweb>
         <precache/>
         <splash>
@@ -49,13 +54,13 @@
     </mobileweb>
     <modules/>
     <deployment-targets>
-        <target device="iphone">false</target>
+        <target device="iphone">true</target>
         <target device="ipad">false</target>
         <target device="android">true</target>
-        <target device="blackberry">true</target>
+        <target device="blackberry">false</target>
         <target device="mobileweb">true</target>
     </deployment-targets>
-    <sdk-version>3.4.0.GA</sdk-version>
+    <sdk-version>3.4.1.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
