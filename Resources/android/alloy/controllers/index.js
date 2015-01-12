@@ -24,6 +24,7 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.index = Ti.UI.createWindow({
+        navBarHidden: true,
         backgroundColor: "white",
         id: "index"
     });

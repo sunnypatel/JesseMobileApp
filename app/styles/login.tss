@@ -1,42 +1,88 @@
-".container": {
-	backgroundColor:"blue",
-	layout:"vertical"
+"Window": {
+	//backgroundImage: "brighterBg.jpeg",
+	backgroundImage: "loginContainerBg.jpg",
+	navBarHidden: true,
+    fullscreen: true,
+    orientationModes: [Ti.UI.PORTRAIT],
+    layout: 'vertical'
 }
-
+"#welcome": {
+	left: '20dp',
+	top: '35dp',
+	font:{
+		fontSize:54
+	},
+	//color: '#363737',
+	color: '#F0F0F0',
+}
+"#catchLine": {
+	font:{
+		fontSize:24
+	},
+	//color: '#363737',
+	color: '#D1CECD',
+	left: '100dp',
+	top: '0dp'
+}
+"#transparency": {
+	bottom: 20,
+	top:20,
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
+	backgroundColor: "#70000000"
+}
+"#loginContainer": {
+	top: '30dp',
+	width: '250dp',
+	height: Titanium.UI.SIZE,
+	font:{
+		fontSize:20,
+		//color: "#F0F0F0",
+		color: "#363737"
+	},
+	layout: 'vertical',
+}
 "TextArea": {
 	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
-	top:"80",
-	left:"40",
-	right:"40",
-	color:"#fff",
+	//borderColor: '#F0F0F0',
+	borderColor: '#363737',
+	borderWidth: '3px',
+	color:"#F0F0F0",
+	//color:"#363737",
+	top: 10
 }
-
-"#login_phone_field": {
+"Label": {
+	left: '0px',
+	top: 10,
 	font: {
-		fontSize:36
-	},
+		fontSize: 26
+	}
+}
+"#login_phone_field": {
 	hintText:"Phone number",
-	value:"2403570609"
+	keyboardType: Ti.UI.KEYBOARD_NUMBER_PAD,
+	value:"2403570609",
+	left:'0px'
 }
 
 "#login_password_field": {
-	font: {
-		fontSize:36
-	},
 	hintText:"Password",
-	value:"jesse2014"
+	value:"jesse2014",
+	left: '0px'
 }
 
 "#login_submit_button": {
 	width: Ti.UI.FILL,
-	height: Ti.UI.SIZE,	
-	font: {
-		fontSize: 36
-	},
-	top:"80",
-	left:"40",
-	right:"40",
-	color:"#fff",
+	height: Ti.UI.SIZE,
+	color:"#F0F0F0",
+	backgroundColor: '#0F4861',
+	top: 20,
+	bottom:40
 }
-
+"#footer": {
+	font: {
+		fontSize: 26
+	},
+	color: "#F0F0F0"
+}
