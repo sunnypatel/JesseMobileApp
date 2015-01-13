@@ -1,18 +1,31 @@
 
 var itemCount = 0;
 var desc;
+var activatedItem;
 
 var funcs = {	
-	showDesc:function(itemNum){
+	itemClicked:function(itemNum){
 		Ti.API.info("showing desc");
+		if(desc != null){
+			if(itemNum != activatedItem){
+				$.row.remove(desc.getView());
+			}else{
+				$.row.remove(desc.getView());
+				return;
+				Ti.API.info("new item number "+itemNum+" matches activated item "+activatedItem);
+			}
+		}
 		desc = Alloy.createController("menu/itemDescription");
 		//desc must be populated
 		$.row.add(desc.getView());
+		activatedItem = itemNum;
+		Ti.API.info("activated item is now: "+itemNum);
 	},	
-	hideDesc:function(itemNum){
-		Ti.API.info("hidding desc");
-		$.row.remove(desc.getView());
-	}
+	// hideDesc:function(){
+		// Ti.API.info("hidding desc");
+		// $.row.remove(desc.getView());
+		// activatedItem = -1;
+	// }
 };
 	
 exports.addItem = function(newItem){
@@ -28,4 +41,5 @@ exports.addBlank = function(){
 	var item = Alloy.createController("menu/blankItem");
 	$.row_items_area.add(item.getView());
 };
+
 
