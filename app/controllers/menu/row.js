@@ -2,17 +2,18 @@
 var itemCount = 0;
 var desc;
 var activatedItem;
+var rowNum;
+var parent;
 
 var funcs = {	
 	itemClicked:function(itemNum){
-		Ti.API.info("showing desc");
+		Ti.API.info("showing desc for row "+rowNum);
+		parent.itemClicked(rowNum);
 		if(desc != null){
-			if(itemNum != activatedItem){
-				$.row.remove(desc.getView());
-			}else{
-				$.row.remove(desc.getView());
+			$.row.remove(desc.getView());
+			if(itemNum == activatedItem){
+				activatedItem=-1;
 				return;
-				Ti.API.info("new item number "+itemNum+" matches activated item "+activatedItem);
 			}
 		}
 		desc = Alloy.createController("menu/itemDescription");
@@ -20,12 +21,20 @@ var funcs = {
 		$.row.add(desc.getView());
 		activatedItem = itemNum;
 		Ti.API.info("activated item is now: "+itemNum);
-	},	
-	// hideDesc:function(){
-		// Ti.API.info("hidding desc");
-		// $.row.remove(desc.getView());
-		// activatedItem = -1;
-	// }
+	}
+};
+
+exports.init = function(rowNumber, parentFuncs){
+	rowNum = rowNumber;
+	parent = parentFuncs;
+};
+
+exports.forceCloseDesc = function(){
+	Ti.API.info("forcing row "+rowNum+" closed");
+	if(desc != null){
+		$.row.remove(desc.getView());
+		activatedItem = -1;
+	}
 };
 	
 exports.addItem = function(newItem){
