@@ -1,5 +1,5 @@
 <Alloy>
 	
-	<TextArea  id="item_name" left="2.5%" width="30%" height="50" value="hw"></TextArea>
+	<TextArea  id="item_name" left="2.5%" width="30%" height="100" value="hw"></TextArea>
 	
 </Alloy>

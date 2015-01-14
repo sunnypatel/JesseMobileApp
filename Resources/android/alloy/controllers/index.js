@@ -29,17 +29,6 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.label = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        font: {
-            fontSize: 12
-        },
-        text: "Hello, World",
-        id: "label"
-    });
-    $.__views.index.add($.__views.label);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Alloy.createController("login");

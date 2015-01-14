@@ -13,3 +13,15 @@ exports.populate = function(newItem){
 exports.setOnClick = function(cb){
 	onClick = cb;
 };
+
+// exports.show = function(){
+	// isVisible = true;
+	// var barHeight = $.bar.height;
+	// $.container.height = Ti.UI.FILL;
+	// $.options.animate({
+		// top: barHeight,
+		// curve: Ti.UI.ANIMATION_CURVE_EASE_OUT
+	// });
+// 	
+	// return;
+// };

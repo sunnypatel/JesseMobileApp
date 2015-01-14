@@ -6,9 +6,6 @@
 }
 
 "#row_items_area":{
-	backgroundColor:"white"
-}
-
-"#row_description_area": {
-	backgroundColor:"blue"
+	backgroundColor:"white",
+	zIndex:1
 }
