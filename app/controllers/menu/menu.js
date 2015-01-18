@@ -34,6 +34,9 @@ var idLookupCallback = function(restaurant){
 		}
 	};
 	
+	var orderingService = require("OrderingService");
+	orderingService.setRestaurant(restaurant);
+	
 	var items = restaurant.items;
 	var i;
 	rows = [];

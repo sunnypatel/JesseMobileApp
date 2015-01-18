@@ -1,9 +1,10 @@
 
-var itemCount = 0;
+var itemCount = -1;
 var desc;
 var activatedItem;
 var rowNum;
 var parent;
+var items = [];
 
 var funcs = {	
 	itemClicked:function(itemNum){
@@ -17,6 +18,7 @@ var funcs = {
 			}
 		}
 		desc = Alloy.createController("menu/itemDescription");
+		desc.populate(items[itemNum]);
 		//desc must be populated
 		$.row.add(desc.getView());
 		activatedItem = itemNum;
@@ -43,6 +45,7 @@ exports.addItem = function(newItem){
 	Ti.API.info("itemrow: "+newItem);
 	item.populate(newItem, itemCount, funcs);
 	$.row_items_area.add(item.getView());
+	items.push(newItem);
 	// $.row_description_area.add(Alloy.createController("menu/item").getView());
 };
 

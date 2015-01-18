@@ -30,7 +30,7 @@ exports.login = function(username, password, callback){
 			//connection failed
 			if(this.status == 0){
 				var toast = Ti.UI.createNotification({
-			    message:"Connection to "+url+" refused",	
+			    message:"Connection to "+url+" refused",
 			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
 				});
 				toast.show();
@@ -183,4 +183,74 @@ exports.getRestaurantById = function(id, callback){
 	//open the connection to the url designated
 	client.open("POST", url+"/restaurant/"+id);
 	client.send();
+};
+
+exports.sendOrder = function(orderModel, callback){
+	var json;
+	var client = Ti.Network.createHTTPClient({
+		
+		//if the login was successful
+		onload: function() {
+			json = JSON.parse(this.responseText);
+			callback(json);
+		},
+		//if the login was unsuccessful
+		onerror: function(e){
+			Ti.API.debug(e.error);
+			//connection failed
+			if(this.status == 0){
+				var toast = Ti.UI.createNotification({
+			    message:"Connection to "+url+" refused",	
+			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+				});
+				toast.show();
+			}
+			//TODO when is this returned?
+			//not found
+			else if(this.status == 404){
+				var toast = Ti.UI.createNotification({
+			    message:"Invalid Username or Password",
+			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+				});
+				toast.show();
+			}
+			//TODO: when is this code returned?
+			else if(this.status == 401){
+				var toast = Ti.UI.createNotification({
+			    message:"Invalid Username or Password",
+			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+				});
+				toast.show();
+			}
+			//server error response
+			else if(this.status == 500){
+				var toast = Ti.UI.createNotification({
+			    message:"We have some technical difficulties :( try again later?)",
+			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
+				});
+				toast.show();
+			}
+			callback(false);
+		}
+	});
+	//open the connection to the url designated
+	client.open("POST", url+"/order");
+	//TODO: should be checking if it is paid yet, or should this even be a field? (it should be if they dont have to enter their info)
+	//TODO: what does confirmed mean?
+	var myOrder = orderModel.getOrder();
+	var orderingService = require("OrderingService");
+	
+	var data = {
+		"apiToken":token,
+		"totalSale":myOrder.totalSale,
+		"totalSalesTax":myOrder.totalSalesTax,
+		"paid":myOrder.paid,
+		"confirmed":myOrder.confirmed,
+		"restaurant":orderingService.getRestaurant().id,
+		"items":myOrder.items
+	};
+	
+	Ti.API.info("this is the order im sending: "+JSON.stringify(data));
+	
+	client.send(JSON.stringify(data));
 };
