@@ -155,40 +155,24 @@ exports.sendOrder = function(orderModel, callback){
 			callback(json);
 		},
 		//if the login was unsuccessful
-		onerror: function(e){
+				onerror: function(e){
 			Ti.API.debug(e.error);
 			//connection failed
 			if(this.status == 0){
-				var toast = Ti.UI.createNotification({
-			    message:"Connection to "+url+" refused",	
-			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
-				});
-				toast.show();
+				alert('Connection refused');
 			}
 			//TODO when is this returned?
 			//not found
 			else if(this.status == 404){
-				var toast = Ti.UI.createNotification({
-			    message:"Invalid Username or Password",
-			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
-				});
-				toast.show();
+				alert('Invalid Phone/Password combo');
 			}
 			//TODO: when is this code returned?
 			else if(this.status == 401){
-				var toast = Ti.UI.createNotification({
-			    message:"Invalid Username or Password",
-			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
-				});
-				toast.show();
+				alert('Invalid Phone/Password combo');
 			}
 			//server error response
 			else if(this.status == 500){
-				var toast = Ti.UI.createNotification({
-			    message:"We have some technical difficulties :( try again later?)",
-			    duration: Ti.UI.NOTIFICATION_DURATION_LONG
-				});
-				toast.show();
+				alert("We're having technical difficulties");
 			}
 			callback(false);
 		}
